@@ -40,7 +40,7 @@
 			//db querry
 			$result = userAuthentication($dbconn,$user,$password);
 
-			$errors[]='somethingwentRon';
+			$errors[]=$result;
 			if($user==$result[0]['username'] && $password==$result[0]['passwd'] ){
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';

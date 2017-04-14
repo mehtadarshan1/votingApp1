@@ -15,9 +15,6 @@
                     <p> <input type="submit" name="submit" value="login" />
                 </fieldset>
             </form>
-            <form>
-            <input type="submit" name="submit" value="New User" />
-            </form>
         </main>
 
         <?php echo(view_errors($errors)); ?>
