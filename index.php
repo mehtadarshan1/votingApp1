@@ -17,7 +17,7 @@
     switch($_SESSION['state']){
 
         case "login":
-        	$view="login.html";
+        	$view="login.php";
         	break;
     }
 
