@@ -11,8 +11,7 @@ function userAuthentication($dbconn, $username, $passwd){
 
 	## check if database was able to prepare it
 	if (!($result)){
-		pg_close($dbconn);
-		break;
+		return null;
 	}
 
 	$result = pg_execute($dbconn, "", array());

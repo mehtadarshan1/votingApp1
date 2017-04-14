@@ -10,8 +10,8 @@
             <form method='post'>
                 <fieldset>
                         <legend>Login</legend>
-                    <p> <label for="user">User</label> <input type="text" name="user" value="<?php echo $_REQUEST['user'] ?>"></input> </p>
-                    <p> <label for="password">Password</label> <input type="password" name="password" value="<?php echo $_REQUEST['password'] ?>"> </input> </p>
+                    <p> <label for="user">User</label> <input type="text" name="user"></input> </p>
+                    <p> <label for="password">Password</label> <input type="password" name="password" > </input> </p>
                     <p> <input type="submit" name="submit" value="login" />
                 </fieldset>
             </form>
