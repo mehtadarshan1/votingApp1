@@ -40,8 +40,10 @@
 			//db querry
 			$result = userAuthentication($dbconn,$user,$password);
 
-			$errors[]=$result;
+			//$errors[]=$result;
 			if($user==$result[0]['username'] && $password==$result[0]['passwd'] ){
+				$errors[]="hello";
+
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';
 				$view = "votepage.php";
