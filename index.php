@@ -22,4 +22,12 @@
     }
 
     require_once "view/$view";
+
+    function view_errors($errors){
+        $s="";
+        foreach($errors as $key=>$value){
+            $s .= "<br/> $value";
+        }
+        return $s;
+    }
 ?>
