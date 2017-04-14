@@ -7,7 +7,7 @@
     ini_set('display_errors', 'Off');
 
     $errors=array();
-
+    $debug = array();
     $view="";
 
     if(!isset($_SESSION['state'])){
@@ -31,6 +31,7 @@
 			if(empty($user)){
 				$errors[]='user is required';
 			}
+
 			if(empty($password)){
 				$errors[]='password is required';
 			}
@@ -38,12 +39,12 @@
 			if(!empty($errors))break;
 
 			//db querry
+			$debug[]=$user. " " . $password;
 			$result = userAuthentication($dbconn,$user,$password);
 
 			//$errors[]=$result;
 			if($user==$result[0]['username'] && $password==$result[0]['passwd'] ){
-				$errors[]="hello";
-
+				//$errors[]="hello";
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';
 				$view = "votepage.php";
