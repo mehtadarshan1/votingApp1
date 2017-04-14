@@ -7,7 +7,7 @@ passwd VARCHAR(50) NOT NULL,
 vote VARCHAR(50) NOT NULL
 );
 
-INSERT INTO voters1 (username, passwd) VALUES
+INSERT INTO voters1 (username, passwd, vote) VALUES
 ('darshan', '1234', 'no'),
 ('ramy', '1234', 'no'),
 ('mo', '1234', 'no'),
