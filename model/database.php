@@ -5,7 +5,7 @@ function dbConnect(){
 		return $dbconn;
 }
 
-function login($dbconn, $username, $passwd){
+function userAuthentication($dbconn, $username, $passwd){
 
 	$result = pg_prepare($dbconn, "", 'SELECT * FROM voters1 WHERE username=$username and paswd=$passwd');
 
@@ -17,7 +17,7 @@ function login($dbconn, $username, $passwd){
 
 	$result = pg_execute($dbconn, "", array());
 
-	return $result;
+	return pg_fetch_all($result);
 
 }
 
