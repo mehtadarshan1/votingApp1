@@ -4,7 +4,7 @@
     session_save_path("sess");
     session_start();
 
-    ini_set('display_errors', 'Off');
+    //ini_set('display_errors', 'Off');
 
     $errors=array();
 
