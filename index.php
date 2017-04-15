@@ -13,6 +13,14 @@
     if(!isset($_SESSION['state'])){
         $_SESSION['state']='login';
     }
+
+    if(isset($_REQUEST['logout'])){
+        unset($_SESSION);
+        session_destroy();
+        $_SESSION['state']='login';
+  
+    }
+
     switch($_SESSION['state']){
 
         case "login":
