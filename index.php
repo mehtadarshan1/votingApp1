@@ -64,6 +64,8 @@
 
         case "vote":
 			$view = "votepage.php";
+            $_SESSION['update']='';
+
             $db=new dbConnect();
             if(empty($_REQUEST['submit']) || $_REQUEST['submit']!="vote" ){
                 break;
@@ -81,6 +83,8 @@
             $voteCount = $db->getVoteCount();
             $_SESSION['extend']=$voteCount['extend'];
             $_SESSION['dontextend']=$voteCount['dontextend'];
+            $_SESSION['update']='UPDATED';
+
             break;
       }
 

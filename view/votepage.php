@@ -13,6 +13,7 @@
 			<input type="submit" name="submit" value="vote" />
 		</form>
 		<?php echo(view_errors($errors)); ?>
+		<?php echo $_SESSION['update']; ?>
 
 		<h2>Current Vote Results</h2>
 	        <table border='1'>
