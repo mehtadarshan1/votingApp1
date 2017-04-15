@@ -40,8 +40,12 @@
 
 			//db querry
 			$debug[]=$user. " " . $password;
-			$result = userAuthentication($dbconn,$user,$password);
 
+            $db=new dbConnect();
+
+            $result = $db->connect($user, $password);
+			//$result = userAuthentication($dbconn,$user,$password);
+            $debug[]=$result;
 			//$errors[]=$result;
 			if($user==$result[0]['username'] && $password==$result[0]['passwd'] ){
 				//$errors[]="hello";
