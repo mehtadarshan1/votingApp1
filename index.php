@@ -63,7 +63,7 @@
         case "vote":
 			$view = "votepage.php";
 
-            if(empty($_REQUEST['submit']) || $_REQUEST['submit']!="login" ){
+            if(empty($_REQUEST['submit']) || $_REQUEST['submit']!="vote" ){
                 break;
             }
 
@@ -73,7 +73,7 @@
 
             if(!empty($errors))break;
 
-            echo "This was my choice:". $_REQUEST['my_choice'];
+            $debug[]="This was my choice:". $_REQUEST['my_choice'];
 
 
         	break;
