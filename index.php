@@ -51,7 +51,7 @@
 
             $result = $db->userLogin($user, $password);
 		
-			if($user==$result[0]['username'] && $password==$result[0]['passwd'] ){
+			if($result){
 				//$errors[]="hello";
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';
@@ -65,7 +65,6 @@
         case "vote":
 			$view = "votepage.php";
             $db=new dbConnect();
-
             $voteCount = $db->getVoteCount();
             $_SESSION['extend']=$voteCount['extend'];
             $_SESSION['dontextend']=$voteCount['dontextend'];

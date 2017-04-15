@@ -21,8 +21,10 @@ class dbConnect {
 
 		$result = pg_fetch_all($result);
 		pg_close($dbconn);
-
-		return $result;
+		if($result[0]['passwd']==$passwd){
+			return True;
+		}
+		return False;
     }
 
     public function vote($username, $vote){
@@ -60,8 +62,8 @@ class dbConnect {
 
 		$dontextend = pg_execute($dbconn, "", array());
 		$result = array();
-		$result['dontextend']=$dontextend;
-		$result['extend']=$extend;
+		$result['dontextend']=pg_fetch_row($dontextend)[0]['count'];
+		$result['extend']=pg_fetch_row($extend)[0]['count'];
 
 		return $result;
 
