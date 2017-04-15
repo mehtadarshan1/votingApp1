@@ -26,6 +26,47 @@ class dbConnect {
 		return $result;
     }
 
+    public function vote($username, $vote){
+    	$dbconn=$this->dbconnect();
+    	$result=pg_prepare($dbconn, "", "UPDATE voters1 SET vote='$vote' WHERE username='$username'");
+
+		## check if database was able to prepare it
+		if (!($result)){
+			pg_close($dbconn);
+			break;
+		}
+
+		$result = pg_execute($dbconn, "", array());
+
+		pg_close($dbconn);
+    }
+
+    public function getVoteCount(){
+    	
+    	$dbconn=$this->dbconnect();
+    	$extend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote=extend");
+
+    	if (!($extend)){
+			pg_close($dbconn);
+			break;
+		}
+		$extend = pg_execute($dbconn, "", array());
+
+    	$dontextend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote=dontextend");
+
+    	if (!($dontextend)){
+			pg_close($dbconn);
+			break;
+		}
+		$dontextend = pg_execute($dbconn, "", array());
+		$result = array();
+		$result['dontextend']=$dontextend;
+		$result['extend']=$extend;
+
+		return $result;
+
+    }
+
 }
 ?>
 

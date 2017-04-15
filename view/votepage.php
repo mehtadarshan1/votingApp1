@@ -21,11 +21,11 @@
 	        	</tr>
 	        	<tr>
 	        		<td>extend</td>
-	        		<td>1</td>
+	        		<td><?php echo $_SESSION['extend']?></td>
 	        	</tr>
 	        	<tr>
 	        		<td>dontextend</td>
-	        		<td>2</td>
+	        		<td><?php echo $_SESSION['dontextend']?></td>
 	        	</tr>
 	        </table>
 

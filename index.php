@@ -56,12 +56,19 @@
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';
 				$view = "votepage.php";
-			}
+			}else{
+                $errors[]='Invalid username or password';
+            }
 
         	break;
 
         case "vote":
 			$view = "votepage.php";
+            $db=new dbConnect();
+
+            $voteCount = $db->getVoteCount();
+            $_SESSION['extend']=$voteCount['extend'];
+            $_SESSION['dontextend']=$voteCount['dontextend'];
 
             if(empty($_REQUEST['submit']) || $_REQUEST['submit']!="vote" ){
                 break;
@@ -73,9 +80,8 @@
 
             if(!empty($errors))break;
 
-            $debug[]="This was my choice:". $_REQUEST['my_choice'];
 
-
+            $result= db->vote($_SESSION['username'], $_REQUEST['my_choice']);
         	break;
     }
 
