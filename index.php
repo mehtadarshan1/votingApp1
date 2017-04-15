@@ -55,6 +55,10 @@
 				//$errors[]="hello";
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';
+                //set up votes
+                $voteCount = $db->getVoteCount();
+                $_SESSION['extend']=$voteCount['extend'];
+                $_SESSION['dontextend']=$voteCount['dontextend'];
 				$view = "votepage.php";
 			}else{
                 $errors[]='Invalid username or password';
@@ -65,10 +69,6 @@
         case "vote":
 			$view = "votepage.php";
             $db=new dbConnect();
-            $voteCount = $db->getVoteCount();
-            $_SESSION['extend']=$voteCount['extend'];
-            $_SESSION['dontextend']=$voteCount['dontextend'];
-
             if(empty($_REQUEST['submit']) || $_REQUEST['submit']!="vote" ){
                 break;
             }
@@ -81,8 +81,12 @@
 
 
             $result= $db->vote($_SESSION['username'], $_REQUEST['my_choice']);
-        	break;
-    }
+            //update votes
+            $voteCount = $db->getVoteCount();
+            $_SESSION['extend']=$voteCount['extend'];
+            $_SESSION['dontextend']=$voteCount['dontextend'];
+            break;
+      }
 
     require_once "view/$view";
 
