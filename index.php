@@ -50,9 +50,7 @@
             $db=new dbConnect();
 
             $result = $db->userLogin($user, $password);
-			//$result = userAuthentication($dbconn,$user,$password);
-            $debug[]=$result;
-			//$errors[]=$result;
+		
 			if($user==$result[0]['username'] && $password==$result[0]['passwd'] ){
 				//$errors[]="hello";
 				$_SESSION['username'] = $user;
@@ -64,6 +62,19 @@
 
         case "vote":
 			$view = "votepage.php";
+
+            if(empty($_REQUEST['submit']) || $_REQUEST['submit']!="login" ){
+                break;
+            }
+
+            if(empty($_REQUEST['my_choice'])){
+                $errors[]='please choose an option';
+            }
+
+            if(!empty($errors))break;
+
+            $debug[]="This was my choice: $_REQUEST['my_choice']";
+
 
         	break;
     }
