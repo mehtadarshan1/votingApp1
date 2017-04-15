@@ -66,6 +66,7 @@
 			$view = "votepage.php";
             $db=new dbConnect();
             $voteCount = $db->getVoteCount();
+            $debug[]=$voteCount;
             $_SESSION['extend']=$voteCount['extend'];
             $_SESSION['dontextend']=$voteCount['dontextend'];
 
