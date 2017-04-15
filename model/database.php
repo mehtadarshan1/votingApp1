@@ -20,7 +20,7 @@ class dbConnect {
 
 		$result = pg_execute($dbconn, "", array());
 
-		$result = pg_fetch_all($dbconn);
+		$result = pg_fetch_all($result);
 		pg_close($dbconn);
 
 		return $result;
