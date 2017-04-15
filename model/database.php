@@ -7,7 +7,7 @@ function dbConnect(){
 
 function userAuthentication($dbconn, $username, $passwd){
 
-	$result = pg_prepare($dbconn, "", 'SELECT * FROM voters1 WHERE username=$username and paswd=$passwd');
+	$result = pg_prepare($dbconn, "", 'SELECT * FROM voters1 WHERE username='.$username.' and passwd=' . $passwd);
 
 	## check if database was able to prepare it
 	if (!($result)){
