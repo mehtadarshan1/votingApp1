@@ -45,7 +45,7 @@ class dbConnect {
     public function getVoteCount(){
 
     	$dbconn=$this->dbconnect();
-    	$extend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote='extend'");
+    	$extend=pg_prepare($dbconn, "", "SELECT COUNT(*) FROM voters1  WHERE vote='extend'");
 
     	if (!($extend)){
 			pg_close($dbconn);
@@ -53,7 +53,7 @@ class dbConnect {
 		}
 		$extend = pg_execute($dbconn, "", array());
 
-    	$dontextend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote='dontextend'");
+    	$dontextend=pg_prepare($dbconn, "", "SELECT COUNT(*) FROM voters1  WHERE vote='dontextend'");
 
     	if (!($dontextend)){
 			pg_close($dbconn);
@@ -63,10 +63,10 @@ class dbConnect {
 		$dontextend = pg_execute($dbconn, "", array());
 		$result = array();
 		$count = pg_fetch_row($dontextend);
-		$result['dontextend']=$count;
+		$result['dontextend']=$count['count'];
 
 		$count = pg_fetch_row($extend);
-		$result['extend']=$count;
+		$result['extend']=$count['count'];
 
 		return $result;
 
