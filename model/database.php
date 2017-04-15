@@ -62,8 +62,11 @@ class dbConnect {
 
 		$dontextend = pg_execute($dbconn, "", array());
 		$result = array();
-		$result['dontextend']=pg_fetch_row($dontextend)[0]['count'];
-		$result['extend']=pg_fetch_row($extend)[0]['count'];
+		$count = pg_fetch_row($dontextend);
+		$result['dontextend']=$count['count'];
+
+		$count = pg_fetch_row($extend);
+		$result['extend']=$count['count'];
 
 		return $result;
 
