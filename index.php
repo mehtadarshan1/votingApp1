@@ -13,8 +13,6 @@
     if(!isset($_SESSION['state'])){
         $_SESSION['state']='login';
     }
-    $dbconn = dbConnect();
-
     switch($_SESSION['state']){
 
         case "login":
