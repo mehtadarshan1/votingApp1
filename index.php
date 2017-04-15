@@ -41,7 +41,7 @@
 
             $db=new dbConnect();
 
-            $result = $db->connect($user, $password);
+            $result = $db->userLogin($user, $password);
 			//$result = userAuthentication($dbconn,$user,$password);
             $debug[]=$result;
 			//$errors[]=$result;
