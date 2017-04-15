@@ -1,7 +1,6 @@
 <?php
 
 class dbConnect {
-	public $row = NULL;
 
     public function dbconnect(){
     	return pg_connect("host=mcsdb.utm.utoronto.ca dbname=mehtada3_309 user=mehtada3 password=05270");
@@ -15,7 +14,7 @@ class dbConnect {
 		## check if database was able to prepare it
 		if (!($result)){
 			pg_close($dbconn);
-			break;
+			return NULL;
 		}
 
 		$result = pg_execute($dbconn, "", array());
@@ -33,7 +32,7 @@ class dbConnect {
 		## check if database was able to prepare it
 		if (!($result)){
 			pg_close($dbconn);
-			break;
+			return NULL;
 		}
 
 		$result = pg_execute($dbconn, "", array());
@@ -42,22 +41,23 @@ class dbConnect {
     }
 
     public function getVoteCount(){
-    	
+
     	$dbconn=$this->dbconnect();
-    	$extend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote=extend");
+    	$extend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote='extend'");
 
     	if (!($extend)){
 			pg_close($dbconn);
-			break;
+			return NULL;
 		}
 		$extend = pg_execute($dbconn, "", array());
 
-    	$dontextend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote=dontextend");
+    	$dontextend=pg_prepare($dbconn, "", "SELECT COUNT(*) voters1  WHERE vote='dontextend'");
 
     	if (!($dontextend)){
 			pg_close($dbconn);
-			break;
+			return NULL;
 		}
+
 		$dontextend = pg_execute($dbconn, "", array());
 		$result = array();
 		$result['dontextend']=$dontextend;
