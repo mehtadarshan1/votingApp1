@@ -73,7 +73,7 @@
 
             if(!empty($errors))break;
 
-            $debug[]="This was my choice: $_REQUEST['my_choice']";
+            $debug[]="This was my choice:". $_REQUEST['my_choice'];
 
 
         	break;
