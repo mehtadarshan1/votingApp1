@@ -81,7 +81,7 @@
             if(!empty($errors))break;
 
 
-            $result= db->vote($_SESSION['username'], $_REQUEST['my_choice']);
+            $result= $db->vote($_SESSION['username'], $_REQUEST['my_choice']);
         	break;
     }
 
