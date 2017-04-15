@@ -7,7 +7,6 @@
     //ini_set('display_errors', 'On');
 
     $errors=array();
-    $debug = array();
     $view="";
 
     if(!isset($_SESSION['state'])){
@@ -44,17 +43,14 @@
 
 			if(!empty($errors))break;
 
-			//db querry
-			$debug[]=$user. " " . $password;
-
             $db=new dbConnect();
 
             $result = $db->userLogin($user, $password);
 		
 			if($result){
-				//$errors[]="hello";
 				$_SESSION['username'] = $user;
         		$_SESSION['state']='vote';
+                
                 //set up votes
                 $voteCount = $db->getVoteCount();
                 $_SESSION['extend']=$voteCount['extend'];

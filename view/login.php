@@ -18,7 +18,6 @@
         </main>
 
         <?php echo(view_errors($errors)); ?>
-        <?php echo(view_errors($debug)); ?>
 
         <footer>
         </footer>

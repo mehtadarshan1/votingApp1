@@ -5,13 +5,14 @@
         <title>Voting Page</title>
     </head>
     <body>
-    	<h1>Vote on 309 extension</h1>
+    	<h1>Vote on 309 Exam Cancellation </h1>
 		<?php echo $_SESSION['username']; ?>'s preference for extension:
 		<form method='post'>
-			<input type="radio" name="my_choice" value="extend" > Extend for 24 hours with 20% penalty  <br>
-			<input type="radio" name="my_choice" value="dontextend" > No extension. Due midnight April 17 <br>
+			<input type="radio" name="my_choice" value="extend" > Cancel the Exam! Everyone gets a 3.9 GPA<br>
+			<input type="radio" name="my_choice" value="dontextend" > No don't cancel the Exam! I wanna die!<br>
 			<input type="submit" name="submit" value="vote" />
 		</form>
+		<?php echo(view_errors($errors)); ?>
 
 		<h2>Current Vote Results</h2>
 	        <table border='1'>
@@ -36,8 +37,6 @@
             	<input type="submit" name="logout" value="logout" />
             </form>
         	
-        	<?php echo(view_errors($errors)); ?>
-        	<?php echo(view_errors($debug)); ?>
         </footer>
     </body>
 </html>
