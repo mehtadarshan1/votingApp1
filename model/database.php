@@ -29,7 +29,7 @@ class dbConnect {
 
     public function vote($username, $vote){
     	$dbconn=$this->dbconnect();
-    	$result=pg_prepare($dbconn, "", "UPDATE voters1 SET vote='$vote' WHERE username='$username'");
+    	$result=pg_prepare($dbconn, "vote", "UPDATE voters1 SET vote= $1 WHERE username= $2");
 
 		## check if database was able to prepare it
 		if (!($result)){
@@ -37,7 +37,7 @@ class dbConnect {
 			return NULL;
 		}
 
-		$result = pg_execute($dbconn, "", array());
+		$result = pg_execute($dbconn, "vote", array($vote,$username));
 
 		pg_close($dbconn);
     }
@@ -45,22 +45,22 @@ class dbConnect {
     public function getVoteCount(){
 
     	$dbconn=$this->dbconnect();
-    	$extend=pg_prepare($dbconn, "", "SELECT COUNT(*) FROM voters1  WHERE vote='extend'");
+    	$extend=pg_prepare($dbconn, "extend", "SELECT COUNT(*) FROM voters1  WHERE vote='extend'");
 
     	if (!($extend)){
 			pg_close($dbconn);
 			return NULL;
 		}
-		$extend = pg_execute($dbconn, "", array());
+		$extend = pg_execute($dbconn, "extend", array());
 
-    	$dontextend=pg_prepare($dbconn, "", "SELECT COUNT(*) FROM voters1  WHERE vote='dontextend'");
+    	$dontextend=pg_prepare($dbconn, "dontextend", "SELECT COUNT(*) FROM voters1  WHERE vote='dontextend'");
 
     	if (!($dontextend)){
 			pg_close($dbconn);
 			return NULL;
 		}
 
-		$dontextend = pg_execute($dbconn, "", array());
+		$dontextend = pg_execute($dbconn, "dontextend", array());
 		$result = array();
 		$count = pg_fetch_row($dontextend);
 		$result['dontextend']=$count[0];
