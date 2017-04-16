@@ -9,7 +9,7 @@ class dbConnect {
     public function userLogin($username,$passwd){
 
     	$dbconn=$this->dbconnect();
-    	$result=pg_prepare($dbconn, "", "SELECT * FROM voters1 WHERE username='$username' and passwd='$passwd'");
+    	$result=pg_prepare($dbconn, "login", "SELECT * FROM voters1 WHERE username= $1 and passwd= $2");
 
 		## check if database was able to prepare it
 		if (!($result)){
@@ -17,7 +17,7 @@ class dbConnect {
 			return NULL;
 		}
 
-		$result = pg_execute($dbconn, "", array());
+		$result = pg_execute($dbconn, "login", array($username,$passwd));
 
 		$result = pg_fetch_all($result);
 		pg_close($dbconn);
@@ -71,7 +71,6 @@ class dbConnect {
 		return $result;
 
     }
-
 }
 ?>
 
