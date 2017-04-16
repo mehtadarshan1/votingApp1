@@ -1,9 +1,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <script language="javascript" src="script.js"></script>
-        <script language="javascript" src="jquery.php"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <script language="javascript" src="view/script.js"></script>
+        <script language="javascript" src="view/jquery.php"></script>
+        <link rel="stylesheet" type="text/css" href="view/style.css">
         <title>Voting Page</title>
     </head>
     <body>
